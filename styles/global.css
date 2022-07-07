@@ -24,6 +24,7 @@ body {
 .logo {
   cursor: pointer;
   padding: 0 2rem;
+  margin: 0;
   letter-spacing: 0.3ch;
   text-transform: uppercase;
   height: 100%;
@@ -32,27 +33,39 @@ body {
   align-items: center;
 }
 
-.logo:hover{
+.logo:hover {
   background-color: grey;
 }
 
 .nav-list {
   list-style: none;
-  display: flex;
-  height: 100%;
+  padding: 0;
+  width: 50%;
   margin: 0;
-  align-items: center;
-  justify-content: space-between;
+
+}
+
+.navbar li {
+  display: inline;
+}
+
+.nav-link:visited {
+  color: black;
 }
 
 .nav-link {
   text-decoration: none;
-  padding: 2rem;
+  display: inline-block;
+  width: 20%;
+  padding: .75rem 0;
+  text-align: center;
 }
 
-.nav-link:hover {
-  background-color: grey;
+.nav-slide {
+  height: .25rem;
+  width: 20%;
+  background-color: tomato;
+  border: none;
+  margin: 0;
+  transition: .3s ease-in-out;
 }
-
-
-
