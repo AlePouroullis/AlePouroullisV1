@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      <h1>This is the footer.</h1>
+      <p className="copyright">&copy; 2022 Alexandros Pouroullis</p>
     </footer>
   );
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import Navbar from './navbar';
-import Link from 'next/link';
 import Footer from './footer';
-import { useRouter } from 'next/router';
 
 const navLinks = [
 	{title: "Home", path: "/", number:"one"},
@@ -13,18 +11,15 @@ const navLinks = [
 ]
 
 export default function Layout({ children }){
-  const router = useRouter();
-  const activeLinkIndex = navLinks.findIndex(link => link.path === router.pathname);
-  console.log(activeLinkIndex);
-  
+    /* NB: the number of elements within the main-grid-container
+    should match the number of values in grid-template-rows in the global css file*/
   return (
-      <>
-        {/* activeLinkIndex is passed as key to force re-render when activeLinkIndex changes. */}
-        <Navbar key={activeLinkIndex} navLinks={navLinks} activeLinkIndex={activeLinkIndex}/>
+      <div className="main-grid-container">
+        <Navbar navLinks={navLinks}/>
         <main>
           {children}
         </main>
         <Footer />
-      </>
+      </div>
   );
 }

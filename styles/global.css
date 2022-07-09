@@ -6,63 +6,99 @@
   padding: 0;
   box-sizing: border-box;
   --navbar-height: 4rem;
-  --navbar-colour: #6963e4;
-  --link-colour: hsl(250, 81%, 41%);
+  --bg-primary: #6963e4;
+  --link-colour: #ff9c38f1;
+  --text-primary: black;
+  overflow-x: hidden;
+}
+
+main {
+  margin: 2rem;
+}
+
+h1 {
+  margin: 0;
 }
 
 body {
   margin: 0;
-  padding: 0;
+}
+
+.main-grid-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: var(--navbar-height);
-  background-color: var(--navbar-colour);
+  color: var(--text-primary);
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-areas: 
+    "logo"
+    "nav-list";
+  background-color: var(--bg-primary);
+  position: relative;
+}
+
+.logo > a {
+  text-decoration: none;
+}
+
+.logo > a:visited {
+  color: var(--text-primary);
 }
 
 .logo {
   cursor: pointer;
+  font-size: 2rem;
   padding: 0 2rem;
   margin: 0;
   letter-spacing: 0.3ch;
-  text-transform: uppercase;
+  text-transform: lowercase;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-area: logo;
 }
 
-.logo:hover {
-  background-color: grey;
+.logo a {
+  transition: .2s ease;
+}
+
+.logo:hover a {
+  color: var(--link-colour);
 }
 
 .nav-list {
   list-style: none;
-  padding: 0;
+  justify-self: center;
   margin: 0;
+  grid-area: nav-list;
 }
 
-.navbar li {
-  display: inline;
+.nav-item {
+  display: inline-block;
 }
 
 .nav-link:visited {
   color: hsl(0, 0, 0);
-  
 }
 
 .nav-link {
+  cursor: pointer;
+  font-size: 1.2rem;
   letter-spacing: 0.1ch;
+  text-transform: lowercase;
   text-decoration: none;
   display: inline-block;
+  margin: .3rem 0;
   border-width: 0 2rem;
-  height: 100%;
   border-style: solid;
   border-color: transparent;
   position: relative;
+  transition: .3s;
 }
 
 .nav-link:hover {
@@ -73,24 +109,132 @@ body {
   font-weight: bold;
 }
 
-.nav-link::before {
-  content: "";
-  height: 3px;
-  transform: scaleX(0);
-  width: 100%;
-  transform-origin: left;
-  position: absolute;
-  background-color: var(--link-colour);
-  transition: transform .5s ease;
-  bottom: -.3rem; 
+.nav-link.active {
+  color: var(--link-colour);
+}
+
+
+footer {
+  background-color: var(--bg-primary);
+
+}
+
+.burger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.8rem;
+  height: 1.5rem;
+  margin: .5rem .5rem .5rem auto;
+  padding: .7rem;
+  border-radius: 50%;
+  border: 3px solid black;
+  transition: .3s;
+  
+  grid-area: burger;
+}
+
+
+.bar {
+  border-radius: 30px;
+  height: 4px;
+  background-color: black;
+  transform: scaleX(1);
+  opacity: 1;
+  transform-origin: 0;
+  /* transition: transform .3s cubic-bezier(.12,1.75,.78,1.39), opacity .3s ease-in; */
+  transition: all .3s ease;
+  position: relative;
   left: 0;
 }
 
-.nav-link:hover::before, .nav-link.active::before {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+
+.burger.active > .middle-bar{
+  transform: scaleX(0);
+  opacity: 0;
 }
 
-.nav-link.active {
-  color: var(--link-colour);
+.burger.active > .top-bar {
+  transform: rotate(45deg);
+  left: .25rem;
+}
+
+.burger.active > .bottom-bar {
+  transform: rotate(-45deg);
+  left: .25rem;
+}
+
+/* big screen */
+@media all and (min-width: 60em) {
+  .burger  {
+    display: none;
+  }
+
+  .nav-link::before {
+    content: "";
+    height: 3px;
+    transform: scaleX(0);
+    width: 100%;
+    transform-origin: left;
+    position: absolute;
+    background-color: var(--link-colour);
+    transition: transform .5s ease;
+    transform-origin: center;
+    /* NB: should match margin-bottom for nav-link. */
+    bottom: -.3rem; 
+    left: 0;
+  }
+  
+  .nav-link:hover::before, .nav-link.active::before {
+    transform: scaleX(1);
+    transform-origin: center;
+  }
+}
+
+.copyright {
+  margin: .5rem 1.5rem;
+}
+
+/* small screen */
+@media all and (max-width: 60em) {
+  .navbar {
+    display: flex;
+  }
+
+  .nav-list {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    right: -100%;
+    top: 100%;
+    transition: .5s ease-in;
+    background-color: var(--bg-primary);
+    opacity: 0.98;
+  }
+
+  .nav-link {
+    display: flex;
+    justify-content: center;
+    border: 0;
+  }
+
+  .nav-link, .nav-item {width: 100%;}
+
+  .nav-list.show {
+    right: 0;
+  }
+
+  .burger:hover {
+    border-color: var(--link-colour);
+  }
+
+  .burger:hover > .bar {
+    background-color: var(--link-colour);
+  }
+
 }
