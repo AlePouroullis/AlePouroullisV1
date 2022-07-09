@@ -24,9 +24,6 @@ export default function Layout({ children }){
         <main>
           {children}
         </main>
-        {(!(router.asPath === '/') && <Link href="/">
-          <a>Back to home</a>
-        </Link>)}
         <Footer />
       </>
   );
