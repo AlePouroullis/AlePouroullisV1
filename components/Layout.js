@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './navbar';
 import Link from 'next/link';
+import Footer from './footer';
 import { useRouter } from 'next/router';
 
 const navLinks = [
@@ -26,6 +27,7 @@ export default function Layout({ children }){
         {(!(router.asPath === '/') && <Link href="/">
           <a>Back to home</a>
         </Link>)}
+        <Footer />
       </>
   );
 }

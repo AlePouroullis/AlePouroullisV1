@@ -19,11 +19,11 @@ export default function Navbar({ navLinks, activeLinkIndex }){
 	// should be placed. The default position is under the active link. 
 	const [underlinePos, setUnderlinePos] = useState(activeLinkIndex);	
 
-	function handleOnMouseEnter(index) {
+	function handleOnMouseEnter(e, index) {
 		setUnderlinePos(index);
 	}
 
-	function handleOnMouseLeave() {
+	function handleOnMouseLeave(e) {
 		setUnderlinePos(activeLinkIndex);
 	}
 	
@@ -43,7 +43,7 @@ export default function Navbar({ navLinks, activeLinkIndex }){
 						<li 
 						key={link.title} 
 						className="nav-item "
-						onMouseEnter={() => handleOnMouseEnter(index)}
+						onMouseEnter={(e) => handleOnMouseEnter(e, index)}
 						onMouseLeave={handleOnMouseLeave}>
 							<Link href={link.path}>
 								<a className={className}>
