@@ -1,6 +1,9 @@
-/* testing 123 */
+/* Open-sans font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  --font-size: 16px;
   font-size: 16px;
   margin: 0;
   padding: 0;
@@ -9,12 +12,10 @@
   --bg-primary: #6963e4;
   --link-colour: #ff9c38f1;
   --text-primary: black;
+  --edge-colour: rgb(214, 214, 214);
   overflow-x: hidden;
 }
 
-main {
-  margin: 2rem;
-}
 
 h1 {
   margin: 0;
@@ -36,42 +37,38 @@ img {
 
 .navbar {
   color: var(--text-primary);
+  background-image: linear-gradient(to top, white, var(--edge-colour));
   display: grid;
   grid-template-rows: auto auto;
   grid-template-areas: 
     "logo"
     "nav-list";
-  background-color: var(--bg-primary);
   position: relative;
 }
 
-.logo > a {
-  text-decoration: none;
-}
-
-.logo > a:visited {
-  color: var(--text-primary);
-}
-
 .logo {
-  cursor: pointer;
-  font-size: 2rem;
-  padding: 0 2rem;
   margin: 0;
-  letter-spacing: 0.3ch;
-  text-transform: lowercase;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   grid-area: logo;
+  padding: 0 2rem;
 }
 
-.logo a {
+.logo-link {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0;
+  letter-spacing: 0.3ch;
+  text-transform: lowercase;
   transition: .2s ease;
+  cursor: pointer;
 }
 
-.logo:hover a {
+.logo-link:hover {
   color: var(--link-colour);
 }
 
@@ -92,7 +89,7 @@ img {
 
 .nav-link {
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   letter-spacing: 0.1ch;
   text-transform: lowercase;
   text-decoration: none;
@@ -119,8 +116,8 @@ img {
 
 
 footer {
-  background-color: var(--bg-primary);
-
+  color: rgb(128, 128, 128);
+  background-image: linear-gradient(to bottom, white, var(--edge-colour));
 }
 
 .burger {
@@ -128,8 +125,8 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 1.8rem;
-  height: 1.5rem;
+  width: 1.5em;
+  height: 1.3rem;
   margin: .5rem .5rem .5rem auto;
   padding: .7rem;
   border-radius: 50%;
@@ -153,7 +150,6 @@ footer {
   left: 0;
 }
 
-
 .burger.active > .middle-bar{
   transform: scaleX(0);
   opacity: 0;
@@ -167,6 +163,46 @@ footer {
 .burger.active > .bottom-bar {
   transform: rotate(-45deg);
   left: .25rem;
+}
+
+
+
+.profile-card {
+  padding: 2rem;
+  background-image: linear-gradient(to bottom, white, rgb(247, 247, 247));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.short-bio{
+  max-width: 40rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.link-icon {
+  cursor: pointer;
+  color: rgb(127, 127, 127);
+  font-size: 2rem;
+  transition: .2s;
+  padding: .2rem;
+  margin: 1rem;
+}
+
+.link-icon:hover {
+  color: black;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+
+.copyright {
+  margin: .5rem 1.5rem;
 }
 
 /* big screen */
@@ -196,11 +232,17 @@ footer {
   }
 }
 
-.copyright {
-  margin: .5rem 1.5rem;
+/* medium screen 
+  65em = 65 * 16px = 1040px */
+@media all and (max-width: 65em){
+  .profile-card {
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
 }
 
-/* small screen */
+/* small screen 
+  60em = 60 * 16px = 960px */
 @media all and (max-width: 60em) {
   .navbar {
     display: flex;
@@ -217,21 +259,33 @@ footer {
     right: -100%;
     top: 100%;
     transition: .5s ease-in;
-    background-color: var(--bg-primary);
+    background-color: white;
     opacity: 0.98;
     z-index: 10;
   }
 
-  .nav-link {
-    display: flex;
-    justify-content: center;
-    border: 0;
+  .burger.active ~ .nav-list {
+    right: 0;
   }
 
-  .nav-link, .nav-item {width: 100%;}
+  .nav-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
-  .nav-list.show {
-    right: 0;
+  .nav-item {
+    opacity: 0;
+    transform:  translateX(30%);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    transition-duration: 1s;
+  }
+
+  .burger.active ~ .nav-list .nav-item {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: calc(var(--order)*200ms);
   }
 
   .burger:hover {
@@ -241,16 +295,5 @@ footer {
   .burger:hover > .bar {
     background-color: var(--link-colour);
   }
-
 }
 
-.profile-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.bio-info {
-  text-align: center;
-}

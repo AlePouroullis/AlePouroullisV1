@@ -1,0 +1,21 @@
+.center {
+  text-align: center;
+}
+
+.grey-text {
+  color: rgb(107, 107, 107);
+}
+
+.ext-link {
+  text-decoration: underline dotted;
+  transition: .3s ease;
+}
+
+.ext-link:visited {
+  color: black;
+}
+
+.ext-link:hover {
+  /* color: #0588BC; */
+  color: var(--link-colour);
+}

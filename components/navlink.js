@@ -11,7 +11,7 @@ NavLink.defaultProps = {
   exact: false
 }
 
-export default function NavLink({ href, exact, children, ...props }){
+export default function NavLink({ href, onClick, exact, children, style, ...props }){
   const { pathname } = useRouter();
   const isActive = exact ? pathname === href : pathname.startsWith(href);
 
@@ -21,8 +21,13 @@ export default function NavLink({ href, exact, children, ...props }){
 
   return (
     <Link href={href}>
-      <li className="nav-item">
-        <a {...props}>
+      <li style={style} className="nav-item">
+        <a {...props} onClick={() => {
+          /* remove the nav link drop down when a new link is pressed */
+          if (!props.className.includes("active")){
+            onClick();
+          }
+        }}>
           {children}
         </a>
       </li>

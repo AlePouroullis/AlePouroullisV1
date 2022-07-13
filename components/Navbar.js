@@ -6,11 +6,11 @@ import { useState } from 'react';
 import classNames from 'classnames';
 
 function Logo({ children }) {
-	return <h1 className="logo">
+	return <div className="logo">
 		<Link href="/">
 			<a className="logo-link" href="">{children}</a>
 		</Link>
-	</h1>
+	</div>
 }
 
 export default function Navbar({ navLinks }){
@@ -18,19 +18,27 @@ export default function Navbar({ navLinks }){
 
 	const toggleIsShowNavList = () => setIsShowNavList(!isShowNavList);
 
-	const navListClassNames = classNames("nav-list", {"show": isShowNavList});
+	const navListClassNames = classNames("nav-list");
 
 	return (
 		<nav className="navbar">
 			<Logo>Alé Pouroullis</Logo>
+			<Burger isShowNavList={isShowNavList} toggleIsShowNavList={toggleIsShowNavList}/>
 			<ul className={navListClassNames}>
-				{navLinks.map(link => 
-					<NavLink key={link.title} exact href={link.path} className="nav-link">
+				{navLinks.map((link, index) => {
+					/* order will be used to stagger the animation
+					  of link content when in mobile view. It will be 
+						stored as an inline style in element.*/
+					const order = index+1;
+
+					return (
+					<NavLink onClick={toggleIsShowNavList} key={link.title} style={{"--order": order}} exact href={link.path} className="nav-link">
 						{link.title}
-					</NavLink>
+					</NavLink>)
+				}
 				)}
 			</ul>
-			<Burger toggleIsShowNavList={toggleIsShowNavList}/>
+
 		</nav>
 	);
 }

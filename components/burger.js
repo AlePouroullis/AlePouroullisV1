@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 
-export default function Burger({ toggleIsShowNavList }) {
-  const [isActive, setIsActive] = useState(false);
+export default function Burger({ isShowNavList, toggleIsShowNavList }) {
   function handleClick() {
-    setIsActive(!isActive);
     toggleIsShowNavList();
   }
 
   const burgerClass = classNames("burger", 
-                      {"active": isActive})
+                      {"active": isShowNavList})
 
   return (
     <div className={burgerClass} onClick={handleClick}>
