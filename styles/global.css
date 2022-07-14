@@ -127,7 +127,7 @@ footer {
   justify-content: space-between;
   width: 1.5em;
   height: 1.3rem;
-  margin: .5rem .5rem .5rem auto;
+  margin: .5rem 1rem .5rem auto;
   padding: .7rem;
   border-radius: 50%;
   border: 3px solid black;
@@ -216,7 +216,6 @@ hr {
     height: 3px;
     transform: scaleX(0);
     width: 100%;
-    transform-origin: left;
     position: absolute;
     background-color: var(--link-colour);
     transition: transform .5s ease;
@@ -278,8 +277,12 @@ hr {
     opacity: 0;
     transform:  translateX(30%);
     transition-property: opacity, transform;
-    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(.32,.7,.35,.97);
     transition-duration: 1s;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
   }
 
   .burger.active ~ .nav-list .nav-item {
