@@ -1,5 +1,5 @@
 /* Open-sans font */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   font-family: 'Open Sans', sans-serif;
@@ -165,7 +165,9 @@ footer {
   left: .25rem;
 }
 
-
+.long-bio {
+  margin: 0 6rem;
+}
 
 .profile-card {
   padding: 2rem;

@@ -28,7 +28,7 @@ export default function Navbar({ navLinks }){
 				{navLinks.map((link, index) => {
 					/* order will be used to stagger the animation
 					  of link content when in mobile view. It will be 
-						stored as an inline style in element.*/
+						stored as an inline style variable in the <li> tags.*/
 					const order = index+1;
 
 					return (
