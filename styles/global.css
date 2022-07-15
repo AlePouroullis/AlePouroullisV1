@@ -267,28 +267,8 @@ hr {
     right: 0;
   }
 
-  .nav-item {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .nav-item {
-    opacity: 0;
-    transform:  translateX(30%);
-    transition-property: opacity, transform;
-    transition-timing-function: cubic-bezier(.32,.7,.35,.97);
-    transition-duration: 1s;
-  }
-
   .nav-link {
     font-size: 1.5rem;
-  }
-
-  .burger.active ~ .nav-list .nav-item {
-    opacity: 1;
-    transform: translateX(0);
-    transition-delay: calc(var(--order)*200ms);
   }
 
   .burger:hover {
