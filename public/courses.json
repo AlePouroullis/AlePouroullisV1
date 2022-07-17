@@ -1,0 +1,24 @@
+{
+  "degrees": [{
+    "universityName" : "University of Cape Town",
+    "startYear": "2022",
+    "endYear": "2024",
+    "type": "BSc",
+    "name": "Computer Science and Applied Statistics",
+    "courses": [
+      {"year": 1, "name": "MAM1004F", "shortDescription": "mam1004 description", "longDescription": "long description"},
+      {"year": 1, "name" : "ECO1010F", "shortDescription": "eco1010f description", "longDescription": "long description"},
+      {"year": 1, "name" : "CSC1015F", "shortDescription": "csc1015f description", "longDescription": "long description"},
+      {"year": 1, "name": "PHI1024F", "descriptionShort": "phi1024f description", "longDescription": "long description"}
+    ]
+  }],
+
+  "extCourses": {
+    "Mathematics for Machine Learning Specialization" : {
+      "organization" : "Imperial College of London",
+      "courses" : [{
+        "courseName": "Linear Algebra", "shortDescription": "short description", "longDescription": "long description"},
+        {"courseName": "Multivariable Calculus", "shortDescription": "short description", "longDescription": "long description"}]
+    }
+  }
+}
