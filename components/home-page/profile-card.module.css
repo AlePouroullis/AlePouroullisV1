@@ -12,18 +12,3 @@
 
 
 
-@keyframes FadeIn {
-  0% {
-    transform: translateY(-5%);
-    opacity: 0;
-  }
-  
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.fade-in {
-  animation: FadeIn 1.5s ease;
-}

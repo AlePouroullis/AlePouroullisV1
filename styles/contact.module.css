@@ -1,0 +1,53 @@
+@keyframes FloatIn {
+  from {
+    transform: translateY(10%);
+  }
+}
+
+.container {
+  margin: 2rem 6rem;
+}
+
+.heading {
+  margin-bottom: 1.5rem;
+}
+
+.list {
+  list-style: none;
+  margin-left: 1rem;
+  padding: 0;
+
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.link:visited, .link {
+  color: hsl(219, 71%, 48%);
+}
+
+.link {
+  text-decoration: none;
+  margin-left: .5rem;
+  transition: .3s;
+}
+
+
+.link:hover {
+  color: var(--link-colour);
+}
+
+.icon {
+  font-size: 30px;
+  margin-right: 1rem;
+}
+
+
+.arrow {
+  margin-right: 1rem;
+  font-size: 20px;
+  font-weight: 100;
+}

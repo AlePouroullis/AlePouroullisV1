@@ -1,0 +1,25 @@
+.heading {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+@keyframes FloatIn {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.float-in {
+  opacity: 0;
+  animation: FloatIn 1.5s ease forwards;
+}
+
+.container {
+  margin: 2rem 6rem;
+}

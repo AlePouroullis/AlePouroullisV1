@@ -245,6 +245,11 @@ hr {
 /* small screen 
   60em = 60 * 16px = 960px */
 @media all and (max-width: 60em) {
+  body {
+    /* removes nav-list from being visible before sliding in. */
+    overflow-x: hidden;
+  }
+
   .navbar {
     display: flex;
   }
