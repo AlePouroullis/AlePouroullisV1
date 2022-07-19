@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import classNames from 'classnames';
 
+
 function Logo({ children }) {
 	return <div className="logo">
 		<Link href="/">

@@ -2,18 +2,19 @@
 
 .project-list {
    display: flex;
+   flex-wrap: wrap;
    padding: 0;
    list-style: none;
 }
+
 
 .project-card {
    position: relative;
    cursor: pointer;
    margin: 1rem;
-   width: 15rem;
-   height: 20rem;
+   width: 20rem;
+   height: 15rem;
    display: flex;
-   border: 1px solid black;
    flex-direction: column;
    align-items: center;
    --image-height: 60%;
@@ -27,15 +28,51 @@
 
 .project-info {
    height: calc(100% - var(--image-height));
+   color: black;
+   font-size: 1rem;
    background-color: white;
    width: 100%;
    display: flex;
-   justify-content: center;
+   flex-direction: column;
+
+   align-items: center;
+   border-top: 1px solid rgb(204, 204, 204);
    position: absolute;
    bottom: 0;
    transition: .2s ease-out;
 }
 
+.project-title {
+   font-size: 1.2em;
+   margin: 0;
+   font-weight: 600;
+   margin: .5rem;
+}
+
+.project-sub-title {
+   font-size: 1em;
+   margin: 0;
+   font-weight: normal;
+}
+
 .project-card:hover .project-info {
    height: 50%;
+}
+
+.project-image, .project-image-container {
+   transition: .2s;
+}
+
+.project-card:hover .project-image-container {
+   background-color: black;
+}
+
+.project-card:hover .project-image {
+   opacity: 0.5;
+}
+
+@media all and (max-width: 60rem) {
+   .project-list {
+      justify-content: center;
+   }
 }

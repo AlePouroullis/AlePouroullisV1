@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import ReactPortal from '../components/react-portal.js';
 import Head from "next/head";
 import utilStyles from "../styles/util.module.css";
 import styles from "../styles/education.module.css";
-import courseData from "../public/courses.json" assert { type: "json" };
+import courseData from '../public/courses.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -15,17 +16,19 @@ function Modal({
   shortDescription,
 }) {
   return show ? (
-    <div className="modal-outer" onClick={handleClick}>
-      <div className="modal-inner">
-        <h3 className="course-name">{courseName}</h3>
-        <button className="exit-button">
-          <FontAwesomeIcon className="exit-icon" icon={faXmark} />
-        </button>
-        <p className="course-description-short">{shortDescription}</p>
-        <hr className={`${utilStyles["line-break-normal"]}`} />
-        <p className="course-description-long">{longDescription}</p>
+    <ReactPortal>
+      <div className="modal-outer" onClick={handleClick}>
+        <div className="modal-inner">
+          <h3 className="course-name">{courseName}</h3>
+          <button className="exit-button">
+            <FontAwesomeIcon className="exit-icon" icon={faXmark} />
+          </button>
+          <p className="course-description-short">{shortDescription}</p>
+          <hr className={`${utilStyles["line-break-normal"]}`} />
+          <p className="course-description-long">{longDescription}</p>
+        </div>
       </div>
-    </div>
+    </ReactPortal>
   ) : (
     ""
   );
@@ -113,7 +116,13 @@ function SpecializationInfo({ specializationName, organization, courses }) {
   );
 }
 
-export default function EducationPage() {
+export async function getStaticProps() { 
+  return {
+    props: {courseData: courseData}
+  };
+}
+
+export default function EducationPage({ courseData }) {
   const yearDecoder = { 1: "First-year", 2: "Second-year", 3: "Third-year" };
   return (
     <>

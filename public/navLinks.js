@@ -1,0 +1,9 @@
+const navLinks =  [
+	{"title": "Home", "path": "/", "number":"one"},
+	{"title": "Projects", "path": "/projects", "number":"two"},
+	{"title": "Education", "path": "/education", "number":"three"},
+	{"title": "Blog", "path": "/blog", "number":"four"},
+	{"title": "Contact", "path": "/contact", "number":"five"}
+  ]
+
+  module.exports = navLinks;

@@ -97,7 +97,7 @@
 }
 
 
-@media all and (max-width: 48.2em) {
+@media all and (max-width: 52em) {
   .course-cards-list {
     justify-content: center;
   }
