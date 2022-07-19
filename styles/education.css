@@ -1,0 +1,104 @@
+.course-cards-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course-card {
+  border: 1px solid rgb(163, 163, 163);
+  margin: 1rem 1rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 15rem;
+  height: 6rem;
+}
+
+.course-name {
+  margin: 0 0 .5rem 0;
+}
+
+.course-description-short {
+  margin: 0;
+}
+
+
+
+.date-container {
+  margin-top: .5rem;
+}
+
+@keyframes Appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rgba(0, 0, 0, .5); */
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  animation: Appear;
+  animation-duration: .5s;
+}
+
+
+@keyframes FloatDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-inner {
+  position: relative;
+  width: 50%;
+  background-color: rgb(252, 252, 252);
+  padding: 2rem;
+  animation: FloatDown;
+  animation-duration: .5s;
+}
+
+
+.exit-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: transparent;
+  margin-left: auto;
+  border: 1rem solid transparent;
+}
+
+.exit-button:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.exit-icon {
+  font-size: 2rem;
+  border-radius: 10px;
+  color: rgb(77, 77, 77);
+}
+
+
+@media all and (max-width: 48.2em) {
+  .course-cards-list {
+    justify-content: center;
+  }
+}

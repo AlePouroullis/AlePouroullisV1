@@ -17,7 +17,7 @@ function Avatar({ animationDelayDuration, floatIn }) {
 
   return (
 
-    <Image style={{animationDelay: animationDelayDuration}} className={floatIn ? `${utilStyles['float-in']}` : " "} src="/images/close-up-smile-no-teeth.jpeg" alt="Picture of me" height={dimensions} width={dimensions} />
+    <Image style={{animationDelay: animationDelayDuration}} className={"avatar-image " + (floatIn ? `${utilStyles['float-in']}` : " ")} src="/images/close-up-smile-no-teeth.jpeg" alt="Picture of me" height={dimensions} width={dimensions} />
   );
 }
 

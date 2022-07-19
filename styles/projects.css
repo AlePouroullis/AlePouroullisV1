@@ -1,0 +1,41 @@
+
+
+.project-list {
+   display: flex;
+   padding: 0;
+   list-style: none;
+}
+
+.project-card {
+   position: relative;
+   cursor: pointer;
+   margin: 1rem;
+   width: 15rem;
+   height: 20rem;
+   display: flex;
+   border: 1px solid black;
+   flex-direction: column;
+   align-items: center;
+   --image-height: 60%;
+}
+
+.project-image-container {
+   height: var(--image-height);
+   width: 100%;
+   position: relative;
+}
+
+.project-info {
+   height: calc(100% - var(--image-height));
+   background-color: white;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   position: absolute;
+   bottom: 0;
+   transition: .2s ease-out;
+}
+
+.project-card:hover .project-info {
+   height: 50%;
+}
