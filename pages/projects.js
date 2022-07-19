@@ -17,7 +17,7 @@ function ProjectCard({ projectTitle, src, alt}) {
 
 export default function ProjectsPage() {
   return (
-    <div className={utilStyles.container}>
+    <div className={`${utilStyles.container} + ${utilStyles['float-in']}`}>
       <h1>Projects</h1>
       <p>Over the course of the last year, I&apos;ve worked on a variety of programming projects, mostly within the domain of artificial intelligence. Here are some of the ones I&apos;ve worked on and that I&apos;ve made open for viewing.</p>
       <ul className="project-list">
