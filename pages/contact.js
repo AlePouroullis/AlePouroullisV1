@@ -1,9 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import { faFile, faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Layout from '../components/layout';
+import { defaultMetaTags } from '../core/constants';
 
 import styles from '../styles/contact.module.css';
 import utilStyles from '../styles/util.module.css';
@@ -17,25 +18,24 @@ export default function ContactPage() {
 
   return (
     <>
-      <Head>
-        <title>Contact | Alé Pouroullis</title>
-      </Head>
-      <div style={{"--delay": "0s"}} className={`${styles.container} ${utilStyles['float-in']}`}>
-        <h1 className={`${utilStyles.heading} ${styles.heading}`}>Contact</h1>
-        <ul className={`${styles.list}`}>
-          {links.map(link => {
-            return (
-              <li key={link.type} className={styles["list-item"]}>
-                  <FontAwesomeIcon icon={faArrowRightLong} className={styles.arrow}/>
-                  <FontAwesomeIcon icon={link.icon} className={styles.icon}/>
-                  <span className={styles['link-text']}>{link.type}:</span>
-               
-                  <a href={link.href} className={styles.link} target="_blank" rel="noopener noreferrer">{link.text}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <Layout metaTags={defaultMetaTags} title="Contact | Alé Pouroullis">
+        <div style={{"--delay": "0s"}} className={`${styles.container} ${utilStyles['float-in']}`}>
+          <h1 className={`${utilStyles.heading} ${styles.heading}`}>Contact</h1>
+          <ul className={`${styles.list}`}>
+            {links.map(link => {
+              return (
+                <li key={link.type} className={styles["list-item"]}>
+                    <FontAwesomeIcon icon={faArrowRightLong} className={styles.arrow}/>
+                    <FontAwesomeIcon icon={link.icon} className={styles.icon}/>
+                    <span className={styles['link-text']}>{link.type}:</span>
+        
+                    <a href={link.href} className={styles.link} target="_blank" rel="noopener noreferrer">{link.text}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </Layout>
     </>
   );
 }

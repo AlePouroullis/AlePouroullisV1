@@ -7,6 +7,8 @@ import courseData from '../public/courses.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import Layout from "../components/layout.js";
+import { defaultMetaTags } from '../core/constants';
 
 function Modal({
   show,
@@ -126,47 +128,46 @@ export default function EducationPage({ courseData }) {
   const yearDecoder = { 1: "First-year", 2: "Second-year", 3: "Third-year" };
   return (
     <>
-      <Head>
-        <title>Education | Alé Pouroullis</title>
-      </Head>
-      <div className={`${utilStyles.container} ${utilStyles["float-in"]}`}>
-        <h1>Education</h1>
-        <section className="university">
-          <h2>Tertiary</h2>
-          <ul className={`${styles["main-list"]}`}>
-            {courseData.degrees.map((degree) => {
-              const courses = degree.courses;
-              courses.sort(sortByYear);
-              return (
-                <DegreeInfo
-                  key={degree.name}
-                  universityName={degree.universityName}
-                  degreeType={degree.type}
-                  degreeName={degree.degreeName}
-                  startYear={degree.startYear}
-                  endYear={degree.endYear}
-                  courses={courses}
-                />
-              );
-            })}
-          </ul>
-        </section>
-        <section className="courses">
-          <h2>Courses</h2>
-          <ul className={`${styles["main-list"]}`}>
-            {courseData.specializations.map((specialization) => {
-              return (
-                <SpecializationInfo
-                  key={specialization.specializationName}
-                  specializationName={specialization.specializationName}
-                  organization={specialization.organization}
-                  courses={specialization.courses}
-                />
-              );
-            })}
-          </ul>
-        </section>
-      </div>
+      <Layout metaTags={defaultMetaTags} title="Education | Alé Pouroullis">
+        <div className={`${utilStyles.container} ${utilStyles["float-in"]}`}>
+          <h1>Education</h1>
+          <section className="university">
+            <h2>Tertiary</h2>
+            <ul className={`${styles["main-list"]}`}>
+              {courseData.degrees.map((degree) => {
+                const courses = degree.courses;
+                courses.sort(sortByYear);
+                return (
+                  <DegreeInfo
+                    key={degree.name}
+                    universityName={degree.universityName}
+                    degreeType={degree.type}
+                    degreeName={degree.degreeName}
+                    startYear={degree.startYear}
+                    endYear={degree.endYear}
+                    courses={courses}
+                  />
+                );
+              })}
+            </ul>
+          </section>
+          <section className="courses">
+            <h2>Courses</h2>
+            <ul className={`${styles["main-list"]}`}>
+              {courseData.specializations.map((specialization) => {
+                return (
+                  <SpecializationInfo
+                    key={specialization.specializationName}
+                    specializationName={specialization.specializationName}
+                    organization={specialization.organization}
+                    courses={specialization.courses}
+                  />
+                );
+              })}
+            </ul>
+          </section>
+        </div>
+      </Layout>
     </>
   );
 }
