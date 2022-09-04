@@ -15,9 +15,9 @@ export default function LongBio({ animationDelayDuration, floatIn}) {
       </h2>
       <h2 className={`${utilStyles.heading} ${styles['no-margin-bottom']}`}>About Me</h2>
       <p className={``}>
-        I'm a first-year student living and studying in Cape Town, South Africa. On the side of my studies, I do programming – be it machine learning, web or software development.
+        I&apos;m a first-year student living and studying in Cape Town, South Africa. On the side of my studies, I do programming – be it machine learning, web or software development.
         <br/><br/>
-        I love working on projects, so long as they're interesting, accelerate personal growth, and, hopefully, provide some meaningful contribution, big or small, to the world. And in the process, I try my best to write code that is clean, maintainable, and functional.
+        I love working on projects, so long as they&apos;re interesting, accelerate personal growth, and, hopefully, provide some meaningful contribution, big or small, to the world. And in the process, I try my best to write code that is clean, maintainable, and functional.
         <br/><br/>
         Some of my recent work includes: type Ia supernovae classification as part of the evaluative task for the <a href="https://summerofcode.withgoogle.com/" target="_blank" rel="noopener noreferrer" className={`${styles['ext-link']}`}>Google Summer of Code programme</a>; crop yield prediction and speech emotion recognition as part of the <a target="_blank" rel="noopener noreferrer" href="https://www.loopqprize.ai/" className={`${styles['ext-link']}`}>Loop Q Prize competition</a>; and web development.
       </p>

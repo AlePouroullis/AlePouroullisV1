@@ -40,7 +40,7 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
 
   useEffect(() => {
     void router.push({ pathname: "/blog", query: { page: page, tag: tag } });
-  }, [page, tag]);
+  }, [page, tag, router]);
 
   const handleTagChosen = (tag) => {
     updatePage(1);

@@ -17,7 +17,8 @@ const BlogPostLink: FunctionComponent<Props> = ({ info }) => {
    useEffect(() => {
       const date = new Date(info.publishedAt);
       setDatePublished(date.toLocaleDateString());
-   }, [datePublished]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
    return (
       <div className="blog-post-link">
          {/* <Link href={getHref(info.slug)} as={getNavigationLink(info.slug)}>
