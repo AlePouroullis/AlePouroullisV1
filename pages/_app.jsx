@@ -6,26 +6,26 @@ import projectStyles from "../styles/projects.css";
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS
-import NProgress from "nprogress";
+// import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Router from "next/router";
 
-NProgress.configure({
-  minimum: 0.3,
-  easing: "ease",
-  speed: 800,
-  showSpinner: false,
-});
+// NProgress.configure({
+//   minimum: 0.3,
+//   easing: "ease",
+//   speed: 800,
+//   showSpinner: false,
+// });
 
-Router.events.on("routeChangeStart", () => {
-  NProgress.start();
-});
-Router.events.on("routeChangeComplete", (url) => {
-  NProgress.done();
-});
-Router.events.on("routeChangeError", () => {
-  NProgress.done();
-});
+// Router.events.on("routeChangeStart", () => {
+//   NProgress.start();
+// });
+// Router.events.on("routeChangeComplete", (url) => {
+//   NProgress.done();
+// });
+// Router.events.on("routeChangeError", () => {
+//   NProgress.done();
+// });
 
 export default function MyApp({ Component, pageProps }) {
   return (
