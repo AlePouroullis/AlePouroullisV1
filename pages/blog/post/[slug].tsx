@@ -1,7 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
 import ReactMarkdown from "react-markdown";
-import Head from "next/head";
+import { useRouter } from 'next/router';
 import { ContentfulService } from "../../../core/api/contentful";
 import { BlogPost } from "../../../interfaces/blogPost";
 import Layout from "../../../components/layout";

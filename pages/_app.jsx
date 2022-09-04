@@ -9,7 +9,6 @@ config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Router from "next/router";
-import { trackPageView } from "../core/gtag";
 
 NProgress.configure({
   minimum: 0.3,
@@ -23,7 +22,6 @@ Router.events.on("routeChangeStart", () => {
 });
 Router.events.on("routeChangeComplete", (url) => {
   NProgress.done();
-  trackPageView(url);
 });
 Router.events.on("routeChangeError", () => {
   NProgress.done();

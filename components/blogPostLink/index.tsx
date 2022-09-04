@@ -18,10 +18,11 @@ const BlogPostLink: FunctionComponent<Props> = ({ info }) => {
       const date = new Date(info.publishedAt);
       setDatePublished(date.toLocaleDateString());
    }, [datePublished]);
-   console.log(getHref(info.slug));
    return (
       <div className="blog-post-link">
-         <Link href={getHref(info.slug)} as={getNavigationLink(info.slug)}>
+         {/* <Link href={getHref(info.slug)} as={getNavigationLink(info.slug)}>
+          */}
+          <Link href={getHref(info.slug)}>
             <a className="action">
                <h3 className="heading">{info.title}</h3>
                <p className="description">{info.description}</p>
