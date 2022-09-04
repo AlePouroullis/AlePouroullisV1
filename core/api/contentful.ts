@@ -1,5 +1,4 @@
 import { createClient } from "contentful";
-import { any } from "prop-types";
 
 export const CONTENT_TYPE_BLOGPOST = "blogPost";
 export const CONTENT_TYPE_AUTHOR = "author";

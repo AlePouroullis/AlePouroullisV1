@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NextPage } from "next";
 import ReactMarkdown from "react-markdown";
 import Head from "next/head";

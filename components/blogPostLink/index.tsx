@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 
-import { getHref, getNavigationLink } from '../../core/api/helper';
+import { getHref, getNavigationLink } from '../../core/api/helpers';
 
 // import './styles.css';
 

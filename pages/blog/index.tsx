@@ -1,5 +1,4 @@
-import React, { FunctionComponent, useEffect, useState, Fragment } from "react";
-import { NextPage, GetStaticPaths } from "next";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { ContentfulService } from "../../core/api/contentful";

@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "utils/sitemap.js", "utils/post-export.js", "core/api/helpers.ts"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import ReactPortal from '../components/react-portal.js';
-import Head from "next/head";
 import utilStyles from "../styles/util.module.css";
 import styles from "../styles/education.module.css";
 import courseData from '../public/courses.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import Layout from "../components/layout.js";
+import Layout from "../components/layout";
 import { defaultMetaTags } from '../core/constants';
 
 function Modal({
