@@ -1,10 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import styles from "../../styles/blog.module.css";
+import utilStyles from '../../styles/util.module.css';
 
 import { ContentfulService } from "../../core/api/contentful";
 import { BlogPost } from "../../interfaces/blogPost";
 import BlogPostLink from "../../components/blogPostLink";
 import { defaultMetaTags } from "../../core/constants";
+import Select from "react-select";
 
 import Layout from "../../components/layout";
 import Paginator from "../../components/paginator";
@@ -48,22 +51,60 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
     });
   }, [page, selectedTags, router]);
 
+  const selectedOptions =
+    selectedTags.length === 0
+      ? { value: "ALL_POSTS", label: "All posts" }
+      : selectedTags.map((tag) => ({ value: tag.id, label: tag.name }));
+
+  const handleSelectionChange = (value, actionMeta) => {
+    console.log(value);
+    console.log(actionMeta);
+    switch (actionMeta.action) {
+      case "remove-value":
+      case "pop-value": {
+        if (actionMeta.removedValue.value !== "ALL_POSTS") {
+          setSelectedTags(
+            selectedTags.filter(
+              (tag) => tag.id !== actionMeta.removedValue.value
+            )
+          );
+        }
+        break;
+      }
+      case "select-option": {
+        setSelectedTags([
+          ...selectedTags,
+          { id: actionMeta.option.value, name: actionMeta.option.label },
+        ]);
+        break;
+      }
+      case "clear": {
+        setSelectedTags([]);
+        break;
+      }
+    }
+  };
 
   return (
     <Layout metaTags={defaultMetaTags} title="Blog | Alé Pouroullis">
-      <div className="blog-page">
-        <div className="blog-posts">
-          <h1>Latest posts</h1>
+      <div className={`${utilStyles.container} ${styles["page-wrapper"]} blog-page`}>
+        <div className={`${styles["horizontally-center-contents"]} blog-posts`}>
+          <h1 className={`${styles.header}`}>Latest posts</h1>
+          <div className={`${styles.filter}`}>
+            <span className={`${styles["filter-text"]}`}>Filter by tag</span>
+            <Select
+              value={selectedOptions}
+              onChange={handleSelectionChange}
+              isMulti
+              isClearable={selectedTags.length !== 0}
+              className={`${styles.select}`}
+              name="tags"
+              options={tags.map((tag) => ({ value: tag.id, label: tag.name }))}
+            />
+          </div>
           <div className="posts-list">{posts(entries)}</div>
         </div>
-        <div className="sidenav">
-          <TagFilters
-            tags={tags}
-            setSelectedTags={setSelectedTags}
-            selectedTags={selectedTags}
-          />
-        </div>
-        <div className="pagination">
+        <div className={`${styles.paginator}`}>
           <Paginator
             handlePaginationChange={(e) => updatePage(e)}
             range={range}
