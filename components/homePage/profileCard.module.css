@@ -10,5 +10,32 @@
   font-size: 1rem;
 }
 
+.link-icon {
+  position: relative;
+}
 
+.link-icon:before {
+  content: attr(tooltip-text);
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(39, 39, 39, 0.9);
+  border: 2px ridge rgb(98, 98, 98);
+  color: rgb(238, 238, 238);
+  border-radius: 2px;
+  font-size: .75rem;
+  width: max-content;
+  padding: 0 .5rem;
+  transition: opacity .2s ease-in .5s, transform .2s ease .5s;
+  position: absolute;
+  transform: translateY(5px);
+  z-index: 1;
+  left: 100%;
+  top: 70%;
+}
+
+.link-icon:hover:before {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+}
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faEnvelope, faFile } from "@fortawesome/free-regular-svg-icons";
+// import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 import styles from "./profileCard.module.css";
 import utilStyles from "../../styles/util.module.css";
@@ -28,13 +29,14 @@ function Avatar({ animationDelayDuration, floatIn }) {
   );
 }
 
-function LinkIcon({ href, icon, className }) {
+function LinkIcon({ href, icon, className, tooltipText }) {
   return (
     <a
-      className="link-icon"
+      className={`link-icon ${styles["link-icon"]}`}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      tooltip-text={tooltipText}
     >
       <FontAwesomeIcon className={className} icon={icon} />
     </a>
@@ -63,16 +65,25 @@ function ShortBio({ animationDelayDuration, floatIn }) {
           className="email-link"
           href="mailto:alexpouroullis123@gmail.com"
           icon={faEnvelope}
+          tooltipText="Email"
         />
         <LinkIcon
           className="linkedin-link"
           href="https://www.linkedin.com/in/alexandros-pouroullis-a105051b6/"
           icon={faLinkedinIn}
+          tooltipText="LinkedIn"
         />
         <LinkIcon
           className="github-link"
           href="https://github.com/AlePouroullis"
           icon={faGithub}
+          tooltipText="GitHub"
+        />
+        <LinkIcon
+          className="resume-link"
+          href="resume.pdf"
+          icon={faFile}
+          tooltipText="Resume"
         />
       </div>
     </div>
