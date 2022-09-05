@@ -1,17 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/blog.module.css";
-import utilStyles from "../../styles/util.module.css";
-
 import { ContentfulService } from "../../core/api/contentful";
 import { BlogPost } from "../../interfaces/blogPost";
-import BlogPostLink from "../../components/blogPostLink";
+import BlogPostLink from "../../components/blogPostLink/blogPost";
 import { defaultMetaTags } from "../../core/constants";
 import Select from "react-select";
-
 import Layout from "../../components/layout";
-import Paginator from "../../components/paginator";
-import TagFilters from "../../components/tagFilters";
+import Paginator from "../../components/paginator/paginator";
 
 const calculateRange = (length) => Array.from({ length }, (v, k) => k + 1);
 

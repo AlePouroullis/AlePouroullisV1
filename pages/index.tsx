@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import ProfileCard from '../components/home-page/profile-card';
-import LongBio from '../components/home-page/long-bio';
+import ProfileCard from '../components/homePage/profileCard';
+import LongBio from '../components/homePage/longBio';
 import Layout from '../components/layout';
 import { MetaTags } from '../interfaces/tag';
 import { defaultMetaTags } from '../core/constants';

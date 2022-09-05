@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 import Navbar from './navbar';
 import Footer from './footer';
 import navLinks from '../public/navLinks.js';
-import Meta from './meta';
+import Meta from './meta/meta';
 import { MetaTags } from '../interfaces/tag';
 import Head from 'next/head';
 

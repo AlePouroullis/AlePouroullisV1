@@ -1,5 +1,6 @@
 import React, { Fragment, FunctionComponent, useEffect, useState } from "react";
-// import "./styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   skip?: number;
@@ -58,8 +59,7 @@ const Paginator: FunctionComponent<Props> = ({
       <div className="paginator">
         {range.length > 1 ? (
           <button className="button" onClick={moveToPreviousPage}>
-            <span className="left-indicator">{"<"}</span>
-            <span className="label">Previous</span>
+            <FontAwesomeIcon className="left-indicator" icon={faAngleLeft} />
           </button>
         ) : null}
 
@@ -67,8 +67,7 @@ const Paginator: FunctionComponent<Props> = ({
 
         {range.length > 1 ? (
           <button className="button" onClick={moveToNextPage}>
-            <span className="right-indicator">{">"}</span>
-            <span className="label">Next</span>
+            <FontAwesomeIcon className="right-indicator" icon={faAngleRight} />
           </button>
         ) : null}
       </div>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import ReactPortal from '../components/react-portal.js';
+import ReactPortal from "../components/reactPortal.js";
 import utilStyles from "../styles/util.module.css";
 import styles from "../styles/education.module.css";
-import courseData from '../public/courses.js';
+import courseData from "../public/courses.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../components/layout";
-import { defaultMetaTags } from '../core/constants';
+import { defaultMetaTags } from "../core/constants";
 
 function Modal({
   show,
@@ -44,7 +44,11 @@ function CourseCard({ courseName, shortDescription, longDescription }) {
 
   return (
     <>
-      <li key={courseName} className={`course-card + ${utilStyles.card}`} onClick={handleClick}>
+      <li
+        key={courseName}
+        className={`course-card + ${utilStyles.card}`}
+        onClick={handleClick}
+      >
         <h4 className="course-name">{courseName}</h4>
         <p className="course-description-short">{shortDescription}</p>
       </li>
@@ -117,9 +121,9 @@ function SpecializationInfo({ specializationName, organization, courses }) {
   );
 }
 
-export async function getStaticProps() { 
+export async function getStaticProps() {
   return {
-    props: {courseData: courseData}
+    props: { courseData: courseData },
   };
 }
 
@@ -127,7 +131,11 @@ export default function EducationPage({ courseData }) {
   const yearDecoder = { 1: "First-year", 2: "Second-year", 3: "Third-year" };
   return (
     <>
-      <Layout pageName="education" metaTags={defaultMetaTags} title="Education | Alé Pouroullis">
+      <Layout
+        pageName="education"
+        metaTags={defaultMetaTags}
+        title="Education | Alé Pouroullis"
+      >
         <div className={`${utilStyles.container} ${utilStyles["float-in"]}`}>
           <h1>Education</h1>
           <section className="university">
