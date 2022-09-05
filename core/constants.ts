@@ -1,4 +1,4 @@
-import { PageType, RobotsContent, MetaTags } from '../interfaces/tag';
+import { PageType, RobotsContent, MetaTags } from '../interfaces/metaTags';
 import { concatenateStrings } from '../utils/concatenateStrings';
 
 export const defaultMetaTags: MetaTags = {

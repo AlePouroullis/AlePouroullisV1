@@ -1,6 +1,6 @@
 import React, { Fragment, FunctionComponent } from "react";
 
-import { MetaTags } from "../../interfaces/tag";
+import { MetaTags } from "../../interfaces/metaTags";
 
 type Props = {
   tags: MetaTags;

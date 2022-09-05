@@ -80,14 +80,14 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
     >
       <div className={`${styles["blog-posts"]} blog-posts`}>
         <h1 className={`${styles.header}`}>Latest posts</h1>
-        <div className={`${styles.filter}`}>
-          <span className={`${styles["filter-text"]}`}>Filter by tag</span>
+        <div className={`filter-wrapper ${styles.filter}`}>
+          <span className={`filter-text ${styles["filter-text"]}`}>Filter by tag</span>
           <Select
             value={selectedOptions}
             onChange={handleSelectionChange}
             isMulti
             isClearable={selectedTags.length !== 0}
-            className={`${styles.select}`}
+            className={`filter-input ${styles.select}`}
             name="tags"
             options={tags.map((tag) => ({ value: tag.id, label: tag.name }))}
           />

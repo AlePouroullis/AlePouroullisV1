@@ -1,8 +1,8 @@
 /* Open-sans font */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 :root {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   --font-size: 16px;
   font-size: 16px;
   margin: 0;
@@ -16,9 +16,9 @@
   overflow-x: hidden;
 }
 
-
-h1 {
+h1, h2, h3 {
   margin: 0;
+  font-weight: 500;
 }
 
 body {
@@ -48,7 +48,7 @@ main {
   background-image: linear-gradient(to top, white, var(--edge-colour));
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-areas: 
+  grid-template-areas:
     "logo"
     "nav-list";
   position: relative;
@@ -64,20 +64,36 @@ main {
   padding: 0 2rem;
 }
 
+.logo-link h1 {
+  font-size: 2.3rem;
+  /* background: rgb(2,0,36); */
+  background: linear-gradient(40deg, rgb(10, 3, 144) 0%, rgb(0, 117, 189) 50%);
+  background-clip: text;
+  color: transparent;
+  transition: 0.2s ease;
+}
+
 .logo-link {
   text-decoration: none;
   color: black;
   font-size: 2rem;
   font-weight: bold;
   padding: 0;
-  letter-spacing: 0.3ch;
+  letter-spacing: 0.2ch;
   text-transform: lowercase;
-  transition: .2s ease;
+  filter: none;
   cursor: pointer;
 }
 
-.logo-link:hover {
-  color: var(--link-colour);
+.logo-link:hover h1 {
+  --alpha: 0.8;
+  background: linear-gradient(
+    40deg,
+    rgb(10, 3, 144, var(--alpha)) 0%,
+    rgb(0, 117, 189, var(--alpha)) 50%
+  );
+  background-clip: text;
+  color: transparent;
 }
 
 .nav-list {
@@ -102,12 +118,12 @@ main {
   text-transform: lowercase;
   text-decoration: none;
   display: inline-block;
-  margin: .3rem 0;
+  margin: 0.3rem 0;
   border-width: 0 2rem;
   border-style: solid;
   border-color: transparent;
   position: relative;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .nav-link:hover {
@@ -122,14 +138,13 @@ main {
   color: var(--link-colour);
 }
 
-
 footer {
   color: rgb(128, 128, 128);
   position: relative;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   background-image: linear-gradient(to bottom, white, var(--edge-colour));
 }
 
@@ -144,15 +159,14 @@ footer {
   justify-content: space-between;
   width: 1.5em;
   height: 1.3rem;
-  margin: .5rem 1rem .5rem auto;
-  padding: .7rem;
+  margin: 0.5rem 1rem 0.5rem auto;
+  padding: 0.7rem;
   border-radius: 50%;
   border: 3px solid black;
-  transition: .3s;
-  
+  transition: 0.3s;
+
   grid-area: burger;
 }
-
 
 .bar {
   border-radius: 30px;
@@ -162,24 +176,24 @@ footer {
   opacity: 1;
   transform-origin: 0;
   /* transition: transform .3s cubic-bezier(.12,1.75,.78,1.39), opacity .3s ease-in; */
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   position: relative;
   left: 0;
 }
 
-.burger.active > .middle-bar{
+.burger.active > .middle-bar {
   transform: scaleX(0);
   opacity: 0;
 }
 
 .burger.active > .top-bar {
   transform: rotate(45deg);
-  left: .25rem;
+  left: 0.25rem;
 }
 
 .burger.active > .bottom-bar {
   transform: rotate(-45deg);
-  left: .25rem;
+  left: 0.25rem;
 }
 
 .long-bio {
@@ -194,7 +208,7 @@ footer {
   align-items: center;
 }
 
-.short-bio{
+.short-bio {
   max-width: 40rem;
   text-align: center;
   margin: 1rem;
@@ -204,8 +218,8 @@ footer {
   cursor: pointer;
   color: rgb(127, 127, 127);
   font-size: 2rem;
-  transition: .2s;
-  padding: .2rem;
+  transition: 0.2s;
+  padding: 0.2rem;
   margin: 1rem;
 }
 
@@ -222,15 +236,22 @@ footer {
 hr {
   border: none;
   height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
 }
 
-.blog-post-link a:link, .blog-post-link a:visited, .blog-post-link:active {
+.blog-post-link a:link,
+.blog-post-link a:visited,
+.blog-post-link:active {
   color: black;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
-.blog-post-link .date {
+.date {
   color: grey;
 }
 
@@ -243,7 +264,7 @@ hr {
 }
 
 .blog-post-link h3 {
-  margin: .3rem 0;
+  margin: 0.3rem 0;
   font-size: 1.2rem;
   font-weight: 400;
   color: #316bdd;
@@ -253,9 +274,14 @@ hr {
   margin: 0 0 2rem 0;
 }
 
+.blog-post-page {
+  max-width: 50rem;
+  margin: 0 3rem;
+}
+
 /* big screen */
 @media all and (min-width: 60em) {
-  .burger  {
+  .burger {
     display: none;
   }
 
@@ -266,14 +292,15 @@ hr {
     width: 100%;
     position: absolute;
     background-color: var(--link-colour);
-    transition: transform .5s ease;
+    transition: transform 0.5s ease;
     transform-origin: center;
     /* NB: should match margin-bottom for nav-link. */
-    bottom: -.3rem; 
+    bottom: -0.3rem;
     left: 0;
   }
-  
-  .nav-link:hover::before, .nav-link.active::before {
+
+  .nav-link:hover::before,
+  .nav-link.active::before {
     transform: scaleX(1);
     transform-origin: center;
   }
@@ -281,7 +308,7 @@ hr {
 
 /* medium screen 
   65em = 65 * 16px = 1040px */
-@media all and (max-width: 65em){
+@media all and (max-width: 65em) {
   .profile-card {
     flex-direction: column;
     padding-bottom: 1rem;
@@ -298,6 +325,11 @@ hr {
 
   .navbar {
     display: flex;
+    align-items: center;
+  }
+
+  .filter-input {
+    min-width: 25rem !important;
   }
 
   .nav-list {
@@ -310,7 +342,7 @@ hr {
     width: 100%;
     right: -100%;
     top: 100%;
-    transition: .5s ease-in;
+    transition: 0.5s ease-in;
     background-color: white;
     opacity: 0.98;
     z-index: 10;
@@ -342,3 +374,39 @@ hr {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* very small screen 
+  60em = 60 * 16px = 960px */
+@media all and (max-width: 40rem) {
+  .burger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.25em;
+    height: 1.1rem;
+    margin: 0.5rem 1rem 0.5rem auto;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 3px solid black;
+    transition: 0.3s;
+  }
+
+  .navbar {
+    align-items: center;
+  }
+  .logo h1 {
+    font-size: 1.8rem;
+  }
+
+  .filter-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .filter-input {
+    min-width: 20rem !important;
+  }
+
+  .filter-text {
+    margin-bottom: 0.5rem;
+  }
+}

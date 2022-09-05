@@ -23,7 +23,7 @@ export default function Navbar({ navLinks }){
 
 	return (
 		<nav className="navbar">
-			<Logo>Alé Pouroullis</Logo>
+			<Logo><h1>Alé Pouroullis</h1></Logo>
 			<Burger isShowNavList={isShowNavList} toggleIsShowNavList={toggleIsShowNavList}/>
 			<ul className={navListClassNames}>
 				{navLinks.map((link, index) => {

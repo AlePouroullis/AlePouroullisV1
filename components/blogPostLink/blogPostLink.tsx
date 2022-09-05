@@ -2,6 +2,9 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import Link from "next/link";
 import { getHref } from "../../core/api/helpers";
 import styles from "./blogPostLink.module.css";
+import dateFormatter from '../../utils/dateFormatter';
+import TagList from "../tagList/tagList";
+import {Tag} from '../../interfaces/tag';
 
 type Props = {
   info: {
@@ -10,23 +13,8 @@ type Props = {
     description: string;
     publishedAt: Date;
     slug: string;
-    tags: { fields: { name: string } }[];
+    tags: Tag[];
   };
-};
-
-const months = {
-  0: "Jan",
-  1: "Feb",
-  2: "Mar",
-  3: "Apr",
-  4: "May",
-  5: "Jun",
-  6: "Jul",
-  7: "Aug",
-  8: "Sep",
-  9: "Oct",
-  10: "Nov",
-  11: "Dec",
 };
 
 const BlogPostLink: FunctionComponent<Props> = ({ info }) => {
@@ -35,7 +23,7 @@ const BlogPostLink: FunctionComponent<Props> = ({ info }) => {
   useEffect(() => {
     const date = new Date(info.publishedAt);
     setDatePublished(
-      `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+      dateFormatter.getDate(date)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -52,16 +40,7 @@ const BlogPostLink: FunctionComponent<Props> = ({ info }) => {
           <p className="description">{info.description}</p>
         </a>
       </Link>
-      {!!info.tags && (
-        <ul className={styles["list"]}>
-          {info.tags.map((tag, index) => (
-            <li className={styles['list-item']} key={tag.fields.name}>
-              {index !== 0 && <span className={styles.middot}>&middot;</span>}
-              <span className={styles.tag}>{tag.fields.name}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <TagList tags={info.tags}/>
     </div>
   );
 };

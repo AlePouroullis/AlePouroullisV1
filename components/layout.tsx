@@ -3,7 +3,7 @@ import Navbar from './navbar';
 import Footer from './footer';
 import navLinks from '../public/navLinks.js';
 import Meta from './meta/meta';
-import { MetaTags } from '../interfaces/tag';
+import { MetaTags } from '../interfaces/metaTags';
 import Head from 'next/head';
 
 type Props = {
