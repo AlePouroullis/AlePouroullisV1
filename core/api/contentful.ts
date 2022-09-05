@@ -38,9 +38,7 @@ export class ContentfulService {
   }
 
   public async getBlogPostEntries(
-    { limit, skip, tags }: { limit?: number; skip?: number; tags?: string } = {
-      limit: 5,
-      skip: 0,
+    { tags }: { tags?: string } = {
       tags: "",
     }
   ) {
@@ -49,9 +47,7 @@ export class ContentfulService {
       // it would be in chronological order).
       const contents = await this.client.getEntries({
         include: 1,
-        limit,
-        skip,
-        ...(tags !== "" && {"fields.tags.sys.id[in]": tags}),
+        ...(tags !== "" && { "fields.tags.sys.id[in]": tags }),
         content_type: CONTENT_TYPE_BLOGPOST,
         order: "-fields.publishDate",
       });
@@ -69,7 +65,7 @@ export class ContentfulService {
 
       const total = contents.total;
 
-      return { entries, total, limit, skip };
+      return { entries, total };
     } catch (error) {
       console.error(error);
     }

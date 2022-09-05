@@ -225,6 +225,34 @@ hr {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
+.blog-post-link a:link, .blog-post-link a:visited, .blog-post-link:active {
+  color: black;
+  text-decoration: none; 
+}
+
+.blog-post-link .date {
+  color: grey;
+}
+
+.blog-post-link a:hover {
+  text-decoration: underline;
+}
+
+.blog-post-link p {
+  margin: 0;
+}
+
+.blog-post-link h3 {
+  margin: .3rem 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #316bdd;
+}
+
+.blog-post-link {
+  margin: 0 0 2rem 0;
+}
+
 /* big screen */
 @media all and (min-width: 60em) {
   .burger  {

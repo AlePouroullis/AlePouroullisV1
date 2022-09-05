@@ -3,13 +3,10 @@ import { useRouter } from "next/router";
 import styles from "../../styles/blog.module.css";
 import { ContentfulService } from "../../core/api/contentful";
 import { BlogPost } from "../../interfaces/blogPost";
-import BlogPostLink from "../../components/blogPostLink/blogPost";
+import BlogPostLink from "../../components/blogPostLink/blogPostLink";
 import { defaultMetaTags } from "../../core/constants";
 import Select from "react-select";
 import Layout from "../../components/layout";
-import Paginator from "../../components/paginator/paginator";
-
-const calculateRange = (length) => Array.from({ length }, (v, k) => k + 1);
 
 const posts = (entries) =>
   entries.map((entry, index) => <BlogPostLink info={entry} key={index} />);
@@ -30,22 +27,16 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
   const tags = props.tags || [];
   const total = props.total;
 
-  const limit = props.limit;
-  const rangeLimit = Math.ceil(total / limit);
-  const range = calculateRange(rangeLimit);
-
-  const [page, updatePage] = useState(!!props.page ? props.page : 1);
   const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     void router.push({
       pathname: "/blog",
       query: {
-        page: page,
         tags: selectedTags.map((tag) => tag.id).join(","),
       },
     });
-  }, [page, selectedTags, router]);
+  }, [selectedTags, router]);
 
   const selectedOptions =
     selectedTags.length === 0
@@ -101,14 +92,8 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
             options={tags.map((tag) => ({ value: tag.id, label: tag.name }))}
           />
         </div>
+        <p className={styles.showing}>Showing {total} {total === 1 ? "post" : "posts"}</p>
         <div className="posts-list">{posts(entries)}</div>
-      </div>
-      <div className={`${styles.paginator}`}>
-        <Paginator
-          handlePaginationChange={(e) => updatePage(e)}
-          range={range}
-          skip={page}
-        />
       </div>
     </Layout>
   );
@@ -116,18 +101,10 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
 
 export async function getServerSideProps({ query }) {
   const contentfulService = new ContentfulService();
-  let page: number = 1;
 
-  if (query.page) {
-    page = parseInt(query.page + "");
-  }
-
-  const postLimit = 4;
-  const { entries, total, skip, limit } =
+  const { entries, total } =
     await contentfulService.getBlogPostEntries({
       tags: decodeURI(query.tags),
-      skip: (page - 1) * postLimit,
-      limit: postLimit,
     });
 
   entries.forEach((entry) => {
@@ -135,7 +112,7 @@ export async function getServerSideProps({ query }) {
   });
   const { tags } = await contentfulService.getAllTags();
 
-  return { props: { page, tags, entries, total, skip, limit } };
+  return { props: { tags, entries, total } };
 }
 
 export default BlogHomePage;
