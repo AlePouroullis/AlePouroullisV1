@@ -38,20 +38,22 @@ export class ContentfulService {
   }
 
   public async getBlogPostEntries(
-    { limit, skip, tag }: { limit?: number; skip?: number; tag?: string } = {
+    { limit, skip, tags }: { limit?: number; skip?: number; tags?: string } = {
       limit: 5,
       skip: 0,
-      tag: "",
+      tags: "",
     }
   ) {
     try {
+      // repsonse is ordered by date from latest to oldest (note the minus behind "fields.publishDate"; without it
+      // it would be in chronological order).
       const contents = await this.client.getEntries({
         include: 1,
         limit,
         skip,
-        "fields.tags.sys.id": tag,
+        ...(tags !== "" && {"fields.tags.sys.id[in]": tags}),
         content_type: CONTENT_TYPE_BLOGPOST,
-        order: "fields.publishDate",
+        order: "-fields.publishDate",
       });
 
       const entries = contents.items.map(
@@ -61,7 +63,7 @@ export class ContentfulService {
           description: fields.description,
           slug: fields.slug,
           tags: fields.tags ? fields.tags : null,
-          publishedAt: fields.publishDate
+          publishedAt: fields.publishDate,
         })
       );
 

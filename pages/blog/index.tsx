@@ -36,16 +36,18 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
   const range = calculateRange(rangeLimit);
 
   const [page, updatePage] = useState(!!props.page ? props.page : 1);
-  const [tag, updateTag] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
-    void router.push({ pathname: "/blog", query: { page: page, tag: tag } });
-  }, [page, tag, router]);
+    void router.push({
+      pathname: "/blog",
+      query: {
+        page: page,
+        tags: selectedTags.map((tag) => tag.id).join(","),
+      },
+    });
+  }, [page, selectedTags, router]);
 
-  const handleTagChosen = (tag) => {
-    updatePage(1);
-    updateTag(tag);
-  };
 
   return (
     <Layout metaTags={defaultMetaTags} title="Blog | Alé Pouroullis">
@@ -57,8 +59,8 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
         <div className="sidenav">
           <TagFilters
             tags={tags}
-            updatePage={handleTagChosen}
-            selectedTagId={tag}
+            setSelectedTags={setSelectedTags}
+            selectedTags={selectedTags}
           />
         </div>
         <div className="pagination">
@@ -84,7 +86,7 @@ export async function getServerSideProps({ query }) {
   const postLimit = 3;
   const { entries, total, skip, limit } =
     await contentfulService.getBlogPostEntries({
-      tag: query.tag ? query.tag.toString() : "",
+      tags: decodeURI(query.tags),
       skip: (page - 1) * postLimit,
       limit: postLimit,
     });
@@ -92,8 +94,7 @@ export async function getServerSideProps({ query }) {
   entries.forEach((entry) => {
     entry.publishedAt = JSON.parse(JSON.stringify(entry.publishedAt));
   });
-  //   const { tags } = await contentfulService.getAllTags();
-  const tags = null;
+  const { tags } = await contentfulService.getAllTags();
 
   return { props: { page, tags, entries, total, skip, limit } };
 }
