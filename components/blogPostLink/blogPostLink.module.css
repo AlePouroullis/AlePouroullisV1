@@ -1,0 +1,25 @@
+.middot {
+   margin: 0 .2rem;
+}
+
+.list {
+   list-style: none;
+   display: inline-block;
+   padding: 0;
+   margin: .2rem 0;
+}
+
+.tag  {
+   margin: 0;
+   color: rgb(88, 88, 88);
+   background-color: rgba(0, 0, 0, 0.1);
+   display: inline-block;
+   padding: .2rem .4rem;
+   border-radius: 20px;
+
+}
+
+.list-item {
+   padding: 0;
+   display: inline-block;
+}
