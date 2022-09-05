@@ -18,7 +18,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Layout metaTags={defaultMetaTags} title="Contact | Alé Pouroullis">
+      <Layout pageName="contact" metaTags={defaultMetaTags} title="Contact | Alé Pouroullis">
         <div style={{"--delay": "0s"}} className={`${styles.container} ${utilStyles['float-in']}`}>
           <h1 className={`${utilStyles.heading} ${styles.heading}`}>Contact</h1>
           <ul className={`${styles.list}`}>

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/blog.module.css";
-import utilStyles from '../../styles/util.module.css';
+import utilStyles from "../../styles/util.module.css";
 
 import { ContentfulService } from "../../core/api/contentful";
 import { BlogPost } from "../../interfaces/blogPost";
@@ -86,31 +86,33 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <Layout metaTags={defaultMetaTags} title="Blog | Alé Pouroullis">
-      <div className={`${utilStyles.container} ${styles["page-wrapper"]} blog-page`}>
-        <div className={`${styles["horizontally-center-contents"]} blog-posts`}>
-          <h1 className={`${styles.header}`}>Latest posts</h1>
-          <div className={`${styles.filter}`}>
-            <span className={`${styles["filter-text"]}`}>Filter by tag</span>
-            <Select
-              value={selectedOptions}
-              onChange={handleSelectionChange}
-              isMulti
-              isClearable={selectedTags.length !== 0}
-              className={`${styles.select}`}
-              name="tags"
-              options={tags.map((tag) => ({ value: tag.id, label: tag.name }))}
-            />
-          </div>
-          <div className="posts-list">{posts(entries)}</div>
-        </div>
-        <div className={`${styles.paginator}`}>
-          <Paginator
-            handlePaginationChange={(e) => updatePage(e)}
-            range={range}
-            skip={page}
+    <Layout
+      pageName="blog"
+      metaTags={defaultMetaTags}
+      title="Blog | Alé Pouroullis"
+    >
+      <div className={`${styles["blog-posts"]} blog-posts`}>
+        <h1 className={`${styles.header}`}>Latest posts</h1>
+        <div className={`${styles.filter}`}>
+          <span className={`${styles["filter-text"]}`}>Filter by tag</span>
+          <Select
+            value={selectedOptions}
+            onChange={handleSelectionChange}
+            isMulti
+            isClearable={selectedTags.length !== 0}
+            className={`${styles.select}`}
+            name="tags"
+            options={tags.map((tag) => ({ value: tag.id, label: tag.name }))}
           />
         </div>
+        <div className="posts-list">{posts(entries)}</div>
+      </div>
+      <div className={`${styles.paginator}`}>
+        <Paginator
+          handlePaginationChange={(e) => updatePage(e)}
+          range={range}
+          skip={page}
+        />
       </div>
     </Layout>
   );
@@ -124,7 +126,7 @@ export async function getServerSideProps({ query }) {
     page = parseInt(query.page + "");
   }
 
-  const postLimit = 3;
+  const postLimit = 4;
   const { entries, total, skip, limit } =
     await contentfulService.getBlogPostEntries({
       tags: decodeURI(query.tags),

@@ -10,9 +10,10 @@ type Props = {
   metaTags: MetaTags;
   children: ReactNode;
   title: string;
+  pageName: string;
 }
 
-const Layout: FunctionComponent<Props> = ({ metaTags, children, title }) => {
+const Layout: FunctionComponent<Props> = ({ metaTags, children, title, pageName }) => {
     /* NB: the number of elements within the main-grid-container
     should match the number of values in grid-template-rows in the global css file*/
   return (
@@ -24,7 +25,7 @@ const Layout: FunctionComponent<Props> = ({ metaTags, children, title }) => {
         <div className="main-grid-container">
           <Navbar navLinks={navLinks}/>
           <main>
-            {children}
+            <div className={`${pageName}-page`}>{children}</div>
           </main>
           <Footer />
         </div>

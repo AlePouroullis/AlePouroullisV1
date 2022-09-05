@@ -40,7 +40,7 @@ export async function getStaticProps() {
 
 const ProjectsPage: FunctionComponent<any> = ({ projects }) => {
   return (
-      <Layout metaTags={defaultMetaTags} title="Projects | Alé Pouroullis">
+      <Layout pageName="projects" metaTags={defaultMetaTags} title="Projects | Alé Pouroullis">
         <div className={`${utilStyles.container} + ${utilStyles["float-in"]}`}>
           <h1>Projects</h1>
           <p>

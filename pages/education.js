@@ -127,7 +127,7 @@ export default function EducationPage({ courseData }) {
   const yearDecoder = { 1: "First-year", 2: "Second-year", 3: "Third-year" };
   return (
     <>
-      <Layout metaTags={defaultMetaTags} title="Education | Alé Pouroullis">
+      <Layout pageName="education" metaTags={defaultMetaTags} title="Education | Alé Pouroullis">
         <div className={`${utilStyles.container} ${utilStyles["float-in"]}`}>
           <h1>Education</h1>
           <section className="university">

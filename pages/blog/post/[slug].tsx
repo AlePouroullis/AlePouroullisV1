@@ -20,7 +20,7 @@ const PostPage: NextPage = (props: Props) => {
     description: `${props.article.description}`
   };
   return (
-    <Layout metaTags={postMetaTags} title={props.article.title}>
+    <Layout pageName="blog-post" metaTags={postMetaTags} title={props.article.title}>
       <div className="post-container">
         <div className="post-header">
           <h1>{props.article.title}</h1>

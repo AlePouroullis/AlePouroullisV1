@@ -16,7 +16,7 @@ const HomePage: FunctionComponent = () => {
 
   return (
     <>
-      <Layout metaTags={defaultMetaTags} title="Home | Alé Pouroullis">
+      <Layout pageName="home" metaTags={defaultMetaTags} title="Home | Alé Pouroullis">
         <ProfileCard
         avatarAnimationDelayDuration={animationDelayDuration.avatar}
         shortBioAnimationDelayDuration={animationDelayDuration.shortBio}
