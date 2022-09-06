@@ -3,6 +3,7 @@ import { Tag } from './tag';
 
 export type BlogPost = {
    title: string;
+   id: string;
    slug: string;
    description: string;
    body: any;

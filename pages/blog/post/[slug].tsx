@@ -13,6 +13,7 @@ import {
 } from "../../../interfaces/metaTags";
 import dateFormatter from "../../../utils/dateFormatter";
 import TagList from "../../../components/tagList/tagList";
+import DisqusComments from '../../../components/disqusComments/disqusComments';
 
 type Props = {
   article: BlogPost;
@@ -43,6 +44,7 @@ const PostPage: NextPage<Props> = ({ article }) => {
         </div>
         <ReactMarkdown className="markdown">{article.body}</ReactMarkdown>
       </div>
+      <DisqusComments post={article}/>
     </Layout>
   );
 };
