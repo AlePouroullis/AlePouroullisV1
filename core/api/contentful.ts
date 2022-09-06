@@ -88,7 +88,7 @@ export class ContentfulService {
         body: entry.fields.body,
         title: entry.fields.title,
         description: entry.fields.description,
-        tags: entry.fields.tags,
+        tags: entry.fields.tags ? entry.fields.tags : null,
         author: { ...author, id: entry.fields.author.sys.id },
         publishedAt: entry.fields.publishDate
           ? new Date(entry.fields.publishDate)

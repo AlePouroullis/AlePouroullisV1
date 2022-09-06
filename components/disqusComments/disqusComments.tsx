@@ -7,14 +7,14 @@ type Props = {
 };
 
 const DisqusComments: React.FC<Props> = ({ post }) => {
-  const disqusShortname = "your-disqus-shortname";
+  const disqusShortname = "alepouroullis";
   const disqusConfig = {
     url: `https://alepouroullis/blog/post/${post.slug}`,
     identifier: post.id, // Single post id
     title: post.title, // Single post title
   };
   return (
-    <div>
+    <div className="disqus-wrapper">
       <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </div>
   );

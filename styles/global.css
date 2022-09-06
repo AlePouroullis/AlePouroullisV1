@@ -139,6 +139,8 @@ main {
 }
 
 footer {
+  display: flex;
+  justify-content: space-between;
   color: rgb(128, 128, 128);
   position: relative;
   bottom: 0;
@@ -148,7 +150,7 @@ footer {
   background-image: linear-gradient(to bottom, white, var(--edge-colour));
 }
 
-.copyright {
+footer p {
   margin: 0;
 }
 
@@ -277,6 +279,19 @@ hr {
 .blog-post-page {
   max-width: 50rem;
   margin: 0 3rem;
+}
+
+.blog-post-page{
+  display: flex;
+  flex-direction: column;
+}
+
+.post-container {
+  flex: 1;
+}
+
+.disqus-wrapper {
+  margin-top: 2rem;
 }
 
 /* big screen */
