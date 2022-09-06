@@ -34,14 +34,14 @@ export default function LongBio({ animationDelayDuration, floatIn }) {
         <br />
         <br />
         Some of my recent work includes: type Ia supernovae classification as
-        part of the evaluative task for the{" "}
+        part of an evaluative task for a{" "}
         <a
           href="https://summerofcode.withgoogle.com/"
           target="_blank"
           rel="noopener noreferrer"
           className={`${styles["ext-link"]}`}
         >
-          Google Summer of Code programme
+          Google Summer of Code project
         </a>
         ; crop yield prediction and speech emotion recognition as part of the{" "}
         <a
@@ -52,7 +52,7 @@ export default function LongBio({ animationDelayDuration, floatIn }) {
         >
           Loop Q Prize competition
         </a>
-        ; and web development.
+        ; and software development for a startup I&apos;m working with.
       </p>
     </div>
   );

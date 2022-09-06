@@ -26,6 +26,7 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
   const entries = props.entries.length ? props.entries : [];
   const tags = props.tags || [];
   const total = props.total;
+  console.log("re-render");
 
   const [selectedTags, setSelectedTags] = useState([]);
 
@@ -36,7 +37,7 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
         tags: selectedTags.map((tag) => tag.id).join(","),
       },
     });
-  }, [selectedTags, router]);
+  }, [selectedTags]);
 
   const selectedOptions =
     selectedTags.length === 0
@@ -86,6 +87,7 @@ const BlogHomePage: FunctionComponent<Props> = (props) => {
             value={selectedOptions}
             onChange={handleSelectionChange}
             isMulti
+            instanceId="tag-filter"
             isClearable={selectedTags.length !== 0}
             className={`filter-input ${styles.select}`}
             name="tags"
